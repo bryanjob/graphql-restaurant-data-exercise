@@ -1,0 +1,46 @@
+# restaurant: This gets a single restaurant based on a provided ID. 
+query getRestaurant($iid: Int = 1) {
+  restaurant(id: $iid) {
+    name
+    description
+  }
+}
+
+# restaurants: This gets a list of all restaurants. 
+query getRestaurants {
+  restaurants {
+    id
+    name
+    description
+    dishes {
+      name
+      price
+    }
+  }
+}
+
+# setrestaurant: This creates a new restaurant. 
+mutation setRestaurant {
+  setrestaurant(input: {
+    name: "Granite",
+    description: "American",
+  }) {
+    name
+    description
+  }
+}
+
+# deleterestaurant: This deletes a restaurant based on the provided id.
+mutation deleteRestaurant($iid: Int = 1) {
+  deleterestaurant(id: $iid) {
+    ok
+  }
+}
+
+# editrestaurant: This updates a restaurant based on the provided id.
+mutation editRestaurant($idd: Int = 2, $name: String = "OLDO") {
+  editrestaurant(id: $idd, name: $name) {
+    name
+    description
+  }
+}
